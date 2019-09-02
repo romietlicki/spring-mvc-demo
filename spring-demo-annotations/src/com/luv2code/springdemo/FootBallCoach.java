@@ -15,7 +15,7 @@ public class FootBallCoach implements Coach {
 	
 	//Using constructor injection with @Qualifier annotation to retrieve the specific fortuneService implementation
 	@Autowired
-	public FootBallCoach(@Qualifier("happyFortuneService") FortuneService theFortuneService){
+	public FootBallCoach(@Qualifier("databaseFortuneService") FortuneService theFortuneService){
 		this.fortuneService = theFortuneService;
 	}
 
