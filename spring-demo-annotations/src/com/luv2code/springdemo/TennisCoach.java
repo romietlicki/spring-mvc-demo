@@ -1,12 +1,15 @@
 package com.luv2code.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
+@Scope("singleton") //scope can be either prototype or singleton NOTE: the default scope is: singleton and can be implicit
 public class TennisCoach implements Coach {
 	
 	//instead of using constructor injection or setter injection you can use the field injection with Autowired.
@@ -34,6 +37,16 @@ public class TennisCoach implements Coach {
 	}
 */
 
+	@PostConstruct
+	public void doMyStartupStuff(){
+		System.out.println("TennisCoach: >> inside doMyStartupStuff() method");
+	}
+	
+	@PreDestroy
+	public void doMyCleanupStuff(){
+		System.out.println("TennisCoach: >> inside doMyCleanupStuff() method");
+	}
+	
 	@Override
 	public String getDailyWorkout() {
 		return "Practice your backhand volley";
