@@ -5,9 +5,14 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author e074953 Rodrigo
+ *
+ */
 @Component
 @Scope("singleton") //scope can be either prototype or singleton NOTE: the default scope is: singleton and can be implicit
 public class TennisCoach implements Coach {
@@ -16,6 +21,10 @@ public class TennisCoach implements Coach {
 	@Autowired
 	@Qualifier("randomService")
 	private FortuneService fortuneService;
+	
+	//retrieving the values from the fortune.properties file and inserting into this array
+	@Value("${foo.fortune}")
+	private String [] fortunes;
 	
 	//define a default constructor
 	public TennisCoach(){
@@ -40,6 +49,12 @@ public class TennisCoach implements Coach {
 	@PostConstruct
 	public void doMyStartupStuff(){
 		System.out.println("TennisCoach: >> inside doMyStartupStuff() method");
+		
+		//loading the array and printing the values
+		for(int i = 0; i < fortunes.length ; i++){
+		System.out.println(fortunes[i]);	
+		}
+		
 	}
 	
 	@PreDestroy
