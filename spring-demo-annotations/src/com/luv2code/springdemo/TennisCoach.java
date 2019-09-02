@@ -6,12 +6,29 @@ import org.springframework.stereotype.Component;
 @Component
 public class TennisCoach implements Coach {
 	
+	//instead of using constructor injection or setter injection you can use the field injection with Autowired.
+	@Autowired
 	private FortuneService fortuneService;
 	
-	@Autowired
+	//define a default constructor
+	public TennisCoach(){
+		System.out.println(">> inside the default constructor");
+	}
+	
+	//defina a constructor injection
+	/*@Autowired
 	public TennisCoach(FortuneService theFortuneService){
 		this.fortuneService = theFortuneService;
+	}*/
+
+/*	
+	//define a setter injection
+	@Autowired
+	public void setFortuneService(FortuneService fortuneService) {
+		System.out.println(">> inside setFortuneService()");
+		this.fortuneService = fortuneService;
 	}
+*/
 
 	@Override
 	public String getDailyWorkout() {
