@@ -5,6 +5,10 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author e074953 Rodrigo
+ *
+ */
 @Component
 public class DatabaseFortuneService implements FortuneService {
 	
