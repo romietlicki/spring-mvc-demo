@@ -30,7 +30,5 @@ Operating System:
 </c:forEach>
 </ul>
 
-${student.operatingSystems}
-
 </body>
 </html>
